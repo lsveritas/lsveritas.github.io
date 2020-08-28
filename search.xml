@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>Hdu 多校10 1010 Tic-Tac-Toe-Nim</title>
+      <link href="/2020/08/28/1010%20Tic-Tac-Toe-Nim/"/>
+      <url>/2020/08/28/1010%20Tic-Tac-Toe-Nim/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>3x3的格子里有9堆石子，Alice和Bob轮流操作，每次可以选择一堆移走任意数量石子(数量&gt;0)，使一行或一列石子堆为空者获胜。另外，Alice和Bob都会在第一回合直接移走一整堆。Alice先手，问在保证Alice能获胜的前提下，Alice的第一次操作有多少种选择。</p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>Nim游戏。枚举9种选择，根据Bouton定理判断是否可行即可。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> p[maxn][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> kase;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;kase);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (kase--)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> sx = <span class="number">0</span>;</span><br><span class="line">REP(i, <span class="number">0</span>, <span class="number">3</span>) REP(j, <span class="number">0</span>, <span class="number">3</span>) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;p[i][j]), sx ^= p[i][j] - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">REP(x, <span class="number">0</span>, <span class="number">3</span>) REP(y, <span class="number">0</span>, <span class="number">3</span>) &#123;</span><br><span class="line"><span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line">REP(x1, <span class="number">0</span>, <span class="number">3</span>) <span class="keyword">if</span> (x1 != x) REP(y1, <span class="number">0</span>, <span class="number">3</span>) <span class="keyword">if</span> (y1 != y)</span><br><span class="line"><span class="keyword">if</span> (sx == ((p[x][y] - <span class="number">1</span>) ^ (p[x1][y1] - <span class="number">1</span>) ^ (p[<span class="number">3</span> - x1 - x][<span class="number">3</span> - y1 - y] - <span class="number">1</span>) ^ p[<span class="number">3</span> - x1 - x][<span class="number">3</span> - y1 - y])) &#123;</span><br><span class="line">flag = <span class="number">0</span>; <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">ans += flag;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2020 Hdu多校 </category>
+          
+          <category> Training Contest 10 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 博弈论 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hdu 多校10 1010 Task Scheduler</title>
+      <link href="/2020/08/27/1010%20Task%20Scheduler/"/>
+      <url>/2020/08/27/1010%20Task%20Scheduler/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题解-转自Tutorial"><a href="#题解-转自Tutorial" class="headerlink" title="题解(转自Tutorial)"></a>题解(转自Tutorial)</h2><p><img src="%5Cassets%5Chdu_duox10_1011.png" alt="hdu_duox10_1011"></p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><strong>警告</strong>：必须要用stable_sort()，sort()会WA！！</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">110</span>;</span><br><span class="line"><span class="keyword">int</span> t[maxn], p[maxn];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> t[x] &gt; t[y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> kase;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;kase);</span><br><span class="line">    <span class="keyword">while</span>(kase--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n, m, k;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;n, &amp;m, &amp;k);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;t[i]);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) p[i] = i;</span><br><span class="line">        <span class="keyword">if</span>(k) stable_sort(p+<span class="number">1</span>, p+n+<span class="number">1</span>, cmp);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d%c&quot;</span>, p[i], i == n ? <span class="string">&#x27;\n&#x27;</span> : <span class="string">&#x27; &#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这题暂时还不是太懂，题解下次补充。</p><p>就酱吧。。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2020 Hdu多校 </category>
+          
+          <category> Training Contest 10 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hdu 多校10 1004 Permutation Counting</title>
+      <link href="/2020/08/25/1004%20Permutation%20Counting/"/>
+      <url>/2020/08/25/1004%20Permutation%20Counting/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给定数组$b$(neighbour sequence)，求满足关系的数组$a$的数量。数组$a$与数组$b$的关系如下：</p><p>$$<br>b_i=<br>    \begin{cases}<br>        0 &amp; a_i &lt; a_{i + 1}\<br>        1 &amp; a_i &gt; a_{i + 1}<br>    \end{cases}<br>$$</p><h2 id="题解-转自Tutorial"><a href="#题解-转自Tutorial" class="headerlink" title="题解(转自Tutorial)"></a>题解(转自Tutorial)</h2><p>我们根据neighbour sequence来构造原排列. 比如对于 0 0 1 1, 我们先放下一个数字 1: </p><p>1 </p><p>然后读 neighbour sequence 的第一个数字, 是 0, 那么我们接着在 1 的右方写下 2: </p><p>1, 2 </p><p>接下来 neighbour sequence 的下一个数字仍然是 0, 那么我们在 2 的右方写下 3: </p><p>1, 2, 3 </p><p>接下来 neighbour sequence 的下一个数字是 1, 那么我们在 3 的左方写下数字 4, 这时候发现一共有 3 种 情况 (4 1 2 3), (1 4 2 3), (1 2 4 3), 我们随便挑一个, 比如 (4 1 2 3) </p><p>4 1 2 3 </p><p>接下来 neighbour sequence 的下一个数字是 1, 那么我们在 4 的左方写下数字 5: </p><p>5 4 1 2 3</p><p>我们得到的这个序列, 假设叫做$c$吧, $c_1 = 5$, $c_2 = 4$, $c_3 = 1$, $c_4 = 2$, $c_5 = 3$, 我们构造一个排列$a$, 使得$a_{c_i} = i$, 比如这里就是$a_1 = 3, a_2 = 4, a_3 = 5, a_4 = 2, a_5 = 1$, 可以发现这样构造的序列$a$的 neighbour sequence 恰好等于给出的序列, 而排列$c$和排列$a$是一一对应的. 于是我们只要数满足条件的序列$c$的个 数即可.</p><p>令$f[i][j]$表示现在已经放到第$i$个数字, 而且第$i$个数字放的位置是$j$. 当前状态是$f[i][j]$的话, 如果输入序列的第$i$位是 0, 就需要往 $f[i + 1][k] (k &gt; j)$ 转移, 否则需要往 $f[i + 1][k] (k ≤ j)$ 转移. 利用前缀和优化一下 DP 即可做到 O($n^2$).</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">5e3</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> b[maxn], f[maxn][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span>&amp; x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    x += y;</span><br><span class="line">    <span class="keyword">if</span>(x &gt;= mod) x -= mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;t);</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;b[i]);</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f));</span><br><span class="line">        f[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;i; j++)</span><br><span class="line">                <span class="keyword">if</span>(b[i] == <span class="number">0</span>) f[i][j+<span class="number">1</span>] = f[i<span class="number">-1</span>][j];</span><br><span class="line">                <span class="keyword">else</span> f[i][j] = f[i<span class="number">-1</span>][j];</span><br><span class="line"></span><br><span class="line">            <span class="comment">//前缀和优化</span></span><br><span class="line">            <span class="keyword">if</span>(b[i] == <span class="number">0</span>) <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=i; j++)</span><br><span class="line">                add(f[i][j], f[i][j<span class="number">-1</span>]);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">for</span>(<span class="keyword">int</span> j=i; j&gt;=<span class="number">1</span>; j--)</span><br><span class="line">                add(f[i][j], f[i][j+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) add(ans, f[n][i]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2020 Hdu多校 </category>
+          
+          <category> Training Contest 10 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 动态规划 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hdu 多校9 1003 Slime and Stones</title>
       <link href="/2020/08/21/1003%20Slime%20and%20Stones/"/>
       <url>/2020/08/21/1003%20Slime%20and%20Stones/</url>
@@ -13,7 +88,9 @@
       
       <categories>
           
-          <category> 2020 Hdu多校 9 </category>
+          <category> 2020 Hdu多校 </category>
+          
+          <category> Training Contest 9 </category>
           
       </categories>
       
@@ -38,7 +115,9 @@
       
       <categories>
           
-          <category> 2020 Hdu多校 9 </category>
+          <category> 2020 Hdu多校 </category>
+          
+          <category> Training Contest 9 </category>
           
       </categories>
       
@@ -63,7 +142,9 @@
       
       <categories>
           
-          <category> 2020 Hdu多校 8 </category>
+          <category> 2020 Hdu多校 </category>
+          
+          <category> Training Contest 8 </category>
           
       </categories>
       
@@ -79,35 +160,16 @@
     
     
     <entry>
-      <title>2020 Multi-University Training Contest 9 汇总</title>
-      <link href="/2020/08/21/2020%20Multi-University%20Training%20Contest%209/"/>
-      <url>/2020/08/21/2020%20Multi-University%20Training%20Contest%209/</url>
+      <title>2020 Multi-University Training Contest 补题</title>
+      <link href="/2020/08/21/2020%20Multi-University%20Training%20Contest/"/>
+      <url>/2020/08/21/2020%20Multi-University%20Training%20Contest/</url>
       
-        <content type="html"><![CDATA[<h1 id="2020-Multi-University-Training-Contest-9"><a href="#2020-Multi-University-Training-Contest-9" class="headerlink" title="2020 Multi-University Training Contest 9"></a><a href="http://acm.hdu.edu.cn/contests/contest_show.php?cid=887">2020 Multi-University Training Contest 9</a></h1><p>AC人数过百的题：</p><ul><li><input checked="" disabled="" type="checkbox"> 1001    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1001&cid=887">Tree</a></li><li><input checked="" disabled="" type="checkbox"> 1003    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1003&cid=887">Slime and Stones</a></li></ul><p>题解：</p><ul><li><a href="http://lsveritas.github.com/2020/08/19/1001%20Tree/">1001</a></li><li><a href="http://lsveritas.github.com/2020/08/20/1004%20Slime%20and%20Stones/">1003</a></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 2020 Hdu多校补题记录 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>2020 Multi-University Training Contest 8 汇总</title>
-      <link href="/2020/08/21/2020%20Multi-University%20Training%20Contest%208/"/>
-      <url>/2020/08/21/2020%20Multi-University%20Training%20Contest%208/</url>
-      
-        <content type="html"><![CDATA[<h1 id="2020-Multi-University-Training-Contest-8"><a href="#2020-Multi-University-Training-Contest-8" class="headerlink" title="2020 Multi-University Training Contest 8"></a><a href="http://acm.hdu.edu.cn/contests/contest_show.php?cid=886">2020 Multi-University Training Contest 8</a></h1><p>AC人数过百的题：</p><ul><li><input checked="" disabled="" type="checkbox"> 1003    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1003&cid=886"> Clockwise or Counterclockwise</a></li><li><input disabled="" type="checkbox"> 1004    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1004&cid=886"> Discovery of Cycles</a></li><li><input disabled="" type="checkbox"> 1006    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1006&cid=886"> Fluctuation Limit</a></li><li><input disabled="" type="checkbox"> 1008    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1008&cid=886"> Hexagon</a></li><li><input disabled="" type="checkbox"> 1009    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1009&cid=886">Isomorphic Strings</a></li></ul><p>题解：</p><ul><li><a href="http://lsveritas.github.com/2020/08/17/1003%20Clockwise%20or%20Counterclockwise/">1003</a></li><li>1004</li><li>1006</li><li>1008</li><li>1009</li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="2020-Multi-University-Training-Contest-8"><a href="#2020-Multi-University-Training-Contest-8" class="headerlink" title="2020 Multi-University Training Contest 8"></a><a href="http://acm.hdu.edu.cn/contests/contest_show.php?cid=886">2020 Multi-University Training Contest 8</a></h2><ul><li><input checked="" disabled="" type="checkbox"> 1003    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1003&cid=886"> Clockwise or Counterclockwise</a></li><li><input disabled="" type="checkbox"> 1004    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1004&cid=886"> Discovery of Cycles</a></li><li><input disabled="" type="checkbox"> 1006    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1006&cid=886"> Fluctuation Limit</a></li><li><input disabled="" type="checkbox"> 1008    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1008&cid=886"> Hexagon</a></li><li><input disabled="" type="checkbox"> 1009    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1009&cid=886">Isomorphic Strings</a></li></ul><h2 id="2020-Multi-University-Training-Contest-9"><a href="#2020-Multi-University-Training-Contest-9" class="headerlink" title="2020 Multi-University Training Contest 9"></a><a href="http://acm.hdu.edu.cn/contests/contest_show.php?cid=887">2020 Multi-University Training Contest 9</a></h2><ul><li><p><input checked="" disabled="" type="checkbox">  1001    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1001&cid=887">Tree</a></p></li><li><p><input checked="" disabled="" type="checkbox">  1003    <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1003&cid=887">Slime and Stones</a></p></li><li><p><a href="http://lsveritas.github.com/2020/08/20/1004%20Slime%20and%20Stones/">http://lsveritas.github.com/2020/08/20/1004%20Slime%20and%20Stones/</a>)</p></li></ul><h2 id="2020-Multi-University-Training-Contest-10"><a href="#2020-Multi-University-Training-Contest-10" class="headerlink" title="2020 Multi-University Training Contest 10"></a><a href="http://acm.hdu.edu.cn/contests/contest_show.php?cid=888">2020 Multi-University Training Contest 10</a></h2><ul><li><p><input checked="" disabled="" type="checkbox">  1003     <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1003&cid=888">Mine Sweeper</a></p></li><li><p><input checked="" disabled="" type="checkbox">  1004     <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1004&cid=888">Permutation Counting</a></p></li><li><p><input checked="" disabled="" type="checkbox">  1010     <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1010&cid=888"> Tic-Tac-Toe-Nim</a></p></li><li><p><input checked="" disabled="" type="checkbox">  1011     <a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1011&cid=888"> Task Scheduler</a></p></li></ul>]]></content>
       
       
       <categories>
           
-          <category> 2020 Hdu多校补题记录 </category>
+          <category> 2020 Hdu多校 </category>
           
       </categories>
       
